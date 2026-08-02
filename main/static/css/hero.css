@@ -1,0 +1,217 @@
+@media (min-width: 1024px) {
+/* ========================= HERO-ПАНЕЛЬ ================================ */
+    .hero {
+        width: 100%;                 /* hero занимает всю ширину экрана */
+        margin-top: 50px;            /* отступ сверху, чтобы не прилипал к шапке */
+        display: flex;               /* включаем flex для центрирования */
+        justify-content: center;     /* центрируем hero по горизонтали */
+        align-items: center;         /* центрируем hero по вертикали */
+        overflow-x: hidden; /* защита от горизонтального скролла */
+    }
+
+
+    .hero-inner {
+        display: flex;                  /* Левая и правая части становятся в ряд */
+        width: 100%;                 /* занимает всю доступную ширину */
+        max-width: 1100px;            /* но не шире 900px — контролируем размер hero */
+        box-sizing: border-box; /* padding НЕ увеличивает ширину */
+        aspect-ratio: 3 / 1.3;         /* фиксируем пропорции: ширина в 3 раза больше высоты */
+        /*transition: background-image 1.0s ease-in-out; /* плавная смена фоновой картинки */
+        background: url("/static/image/hero/plasterer.webp") center/cover no-repeat;
+
+        position: relative;          /* позволяет позиционировать элементы внутри hero */
+    }
+
+    .hero-left,
+    .hero-right{
+        width: 50%;                     /* Каждая занимает половину Hero */
+        position: relative;             /* Для абсолютного позиционирования внутри */
+    }
+    .hero-left{
+        background: rgba(255,0,0,.2);
+        position: relative;
+        display: flex;              /* Включаем Flexbox */
+        flex-direction: column;     /* Располагаем элементы сверху вниз */
+        padding-top: clamp(5px, 1vw, 10px);
+        padding-left: clamp(5px, 1.5vw, 10px);
+        gap: clamp(1px, 2vw, 20px); /* Расстояние между блоками */
+    }
+    .hero-right{
+        background: rgba(85, 85, 136, 0.2);
+    }
+    /*  ------------------------------ ЛЕВЫЙ ТЕКСТ ------------------------------ */
+    .hero-left-text1 {
+        font-size: clamp(0.95rem, 4vw, 2.5rem); /* адаптивный размер текста */
+        white-space: nowrap;    /* Запрещает перенос строки */
+        line-height: 1;           /* межстрочный интервал */
+        font-weight: bold;            /* жирный текст */
+        color: #ffffff;                 /* белый цвет */
+        max-width: 50%;              /* ограничиваем ширину текста */
+    }
+    .hero-left-text2 {
+        font-size: clamp(0.95rem, 3vw, 2rem);
+        color: #fff;
+    }
+
+    /* ------------------------------ ПРАВЫЙ ТЕКСТ (базовые настройки) ------------------------------ */
+    .hero-right-text {
+        position: absolute;          /* текст будет двигаться по экрану */
+        font-size: clamp(0.95rem, 3vw, 2rem); /* адаптивный размер */
+        line-height: 1.25;           /* межстрочный интервал */
+        font-weight: bold;            /* жирный */
+        max-width: 60%;              /* ограничиваем ширину */
+    }
+    /* ------------------------------ ПОЗИЦИИ ТЕКСТА ------------------------------ */
+
+    .text-seamstress {
+        top: clamp(10px, 3vw, 20px);
+        right: clamp(10px, 4vw, 1px);
+        color: #030303;
+        text-shadow:
+            -1px -1px 0 #ffffff,
+            1px -1px 0 #ffffff,
+            -1px  1px 0 #ffffff,
+            1px  1px 0 #ffffff; 
+    }
+
+    .text-electrician {
+        top: 50%;
+        left: clamp(20px, 4vw, 40px);
+        transform: translateY(-50%);
+        color: #000;
+    }
+
+    .text-plasterer {
+        bottom: clamp(10px, 3vw, 20px);
+        left: 50%;
+        transform: translateX(-50%);
+        color: #ffe100;
+    }
+
+    .text-plumber {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #0094ff;
+    }
+
+    /* ------------------------------ КНОПКИ ------------------------------ */
+    .hero-btn {
+        position: absolute;          /* Абсолютное позиционирование */
+        bottom: clamp(6px, 2vw, 20px); /* Адаптивный отступ снизу */
+
+        width: clamp(120px, 11vw, 220px);  /* Адаптивная ширина кнопки */
+        height: clamp(30px, 3vw, 40px);  /* Адаптивная высота кнопки */
+
+        display: flex;               /* включаем flex-контейнер */
+        justify-content: center;    /* центрируем текст по горизонтали */
+        align-items: center;        /* центрируем текст по вертикали */
+
+        text-align: center;          /* текст по центру */
+        font-size: clamp(10px, 0.9vw, 16px); /* Адаптивный текст кнопки */
+        font-weight: bold;            /* жирный */
+        text-decoration: none;       /* без подчёркивания */
+        
+        border: none;                /* без рамки */
+        border-radius: 6px;          /* скругление */
+        cursor: pointer;             /* курсор руки */
+        
+        transition: transform 0.1s ease, background 0.2s ease; /* анимация */
+    }
+    .hero-left-btn { left: clamp(12px, 3vw, 40px); }
+    .hero-right-btn { right: clamp(12px, 3vw, 40px); }
+
+
+
+    .hero-btn:hover { transform: scale(1.03); } /* увеличение при наведении */
+    .hero-btn:active { transform: scale(0.97); } /* уменьшение при клике */
+
+    .hero-btn.yellow { background: #ffe100; color: #000; } /* жёлтая кнопка */
+    .hero-btn.yellow:hover { background: #ffea33; }
+
+    .hero-btn.blue { background: #0094ff; color: #fff; } /* синяя кнопка */
+    .hero-btn.blue:hover { background: #1aa4ff; }
+
+    /* ------------------------------ БЛОКИ С ИКОНКАМИ ------------------------------ */
+    .hero-features-right,
+    .hero-features-left{
+        display: flex;                  /* Включает Flexbox. Все .feature располагаются в один ряд */
+        flex-wrap: nowrap;              /* Запрещает перенос блоков на следующую строку */
+        gap: clamp(10px, 4vw, 20px);    /* Расстояние между блоками. Автоматически меняется в зависимости от ширины экрана */
+    }
+    /* ------------------------------ РАЗДЕЛИТЕЛЬ МЕЖДУ ИКОНКАМИ ------------------------------ */
+    .hero-features-left .feature,
+    .hero-features-right .feature{
+        position: relative;
+    }
+
+    .hero-features-left .feature:not(:last-child)::after,
+    .hero-features-right .feature:not(:last-child)::after{
+        content: "";                            /* Создает псевдоэлемент (вертикальную линию) */
+        position: absolute;                     /* Позволяет свободно расположить линию */
+        top: 50%;                               /* Размещает линию по центру блока по вертикали */
+        right: calc(clamp(15px, 2vw, 30px) / -2); /* Смещает линию между соседними блоками */
+        transform: translateY(-50%);            /* Точное выравнивание по вертикали */
+        width: 2px;                             /* Толщина линии */
+        height: clamp(30px, 4vw, 50px);         /* Адаптивная высота линии */
+        background: rgb(248, 0, 8);      /* Цвет линии */
+    }  
+    /* ------------------------------ ЛЕВЫЕ ИКОНКИ ------------------------------ */
+    .hero-features-left{
+        margin-top: clamp(5px, 2vw, 10px); /* Отступ сверху от предыдущего элемента */
+    }
+    /* ------------------------------ ПРАВЫЕ ИКОНКИ ------------------------------ */
+    .hero-features-right{
+        margin-top: clamp(10px, 2vw, 20px); /* Отступ сверху от предыдущего элемента */
+    }
+    .feature{
+        display: flex;                  /* Иконка и текст располагаются рядом по горизонтали */
+        align-items: flex-start;        /* Выравнивает иконку по верхнему краю текста */
+        gap: clamp(8px, 1vw, 10px);     /* Расстояние между иконкой и текстом */
+    }
+    /* ------------------------------ ПРАВАЯ СТОРОНА ------------------------------ */
+    .hero-features-right .feature{
+        flex-direction: column;      /* Иконка сверху, текст снизу */
+        align-items: center;         /* Центрируем по горизонтали */
+        text-align: center;          /* Текст по центру */
+        gap: clamp(6px, 0.8vw, 10px);
+    }
+    /* ------------------------------ ТЕКСТ ПОД ИКОНКАМИ ------------------------------ */
+    .feature-text-right,
+    .feature-text-left{
+        font-size: clamp(2px, 4vw, 15px); /* Размер текста: минимум 10px, максимум 18px */
+        line-height: 1;               /* Расстояние между строками текста */
+        font-weight: bold;
+    }
+    .feature-text-left{
+        color: rgb(243, 235, 235);                   /* Цвет текста */
+    }
+    .feature-text-right{
+        color: rgb(7, 7, 7);                   /* Цвет текста */
+    }
+    /* ------------------------------ SVG ИКОНКИ ------------------------------ */
+    .icon-right,
+    .icon-left{
+        width: clamp(2px, 3vw, 28px);    /* Адаптивная ширина иконки */
+        height: clamp(2px, 3vw, 28px);   /* Адаптивная высота иконки */
+        fill: none;                     /* Без внутренней заливки */
+        stroke-width: 2.3;                /* Толщина линий иконки */
+        stroke-linecap: round;          /* Скругляет концы линий */
+        stroke-linejoin: round;         /* Скругляет углы соединения линий */
+        flex-shrink: 0;                 /* Не позволяет Flexbox уменьшать размер иконки */
+    }
+    /* ------------------------------ ЛЕВЫЕ ИКОНКИ ------------------------------ */
+
+    .icon-left{
+        stroke: rgb(250, 250, 250);                 
+    }
+    .icon-right{
+        stroke: rgb(0, 0, 0);                  
+        filter:
+            drop-shadow(0.5px 0 0 white)
+            drop-shadow(-0.5px 0 0 white)
+            drop-shadow(0 0.5px 0 white)
+            drop-shadow(0 -0.5px 0 white);
+    }
+
+}

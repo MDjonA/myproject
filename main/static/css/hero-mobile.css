@@ -1,0 +1,357 @@
+/* ===========================
+   Мобильная версия сайта
+   Срабатывает на экранах до 700px
+=========================== */
+@media (max-width: 1023px) {
+   .hero-features-left .feature::after,
+    .hero-features-right .feature::after{
+        display:none;
+        content:none;
+    }
+/* ================================================================ */
+/* ============================ TOPBAR ============================ */
+/* ================================================================ */
+    .topbar {
+        width: 100%;                 /* Шапка занимает всю ширину экрана */
+        height: 60px;                /* Фиксированная высота шапки */
+        padding: 0;                  /* Убираем внутренние отступы */
+        background: transparent;     /* Полностью прозрачный фон */
+        position: fixed;             /* Шапка всегда находится поверх страницы */
+        top: 0;                      /* Прижимаем к верхнему краю окна */
+        left: 0;                     /* Прижимаем к левому краю окна */
+        z-index: 1000;               /* Размещаем поверх всех остальных элементов */
+        box-shadow: none;            /* Убираем тень */
+    }
+    /* внутренний контейнер */
+    .topbar-inner{
+        width: 100%;                 /* Контейнер занимает всю ширину шапки */
+        height: 100%;                /* Высота равна высоте .topbar */
+        display: flex;               /* Включаем Flexbox */
+        justify-content: space-between; /* Логотип слева, бургер справа */
+       align-items: center;         /* Выравниваем элементы по вертикали */
+        padding: 0 16px;             /* Отступы слева и справа по 16px */
+        box-sizing: border-box;      /* Padding входит в общую ширину блока */
+    }
+
+    /* Скрываем обычное меню */
+    .topbar-nav {
+        display: none;
+    }
+    .footer{
+        display: none;
+    }
+
+    /* Кнопка бургер-меню */
+    .burger-btn {
+        display:flex !important;   /*Эта строка превращает элемент во Flex-контейнер.*/
+        width: 48px;               /* Ширина кнопки */
+        height: 48px;              /* Высота кнопки */
+        padding:0;
+        border: none;              /* Без рамки */
+        background: transparent;   /* Полностью прозрачная */
+        cursor: pointer;           /* Курсор в виде руки */
+        justify-content: center;   /* По вертикали по центру */
+        align-items: center;       /* По горизонтали по центру */
+        flex-direction: column;    /* Полоски идут сверху вниз */
+        gap: 6px;                  /* Расстояние между полосками */
+        flex-shrink:0;             /*Она запрещает Flex уменьшать элемент. Если места станет мало*/
+    }
+
+    /* Полоски бургер-меню */
+    .burger-btn span {
+        display:block;
+        width: 34px;              /* Длина полоски */
+        height: 4px;              /* Толщина полоски */
+        background:#e53935;
+        border-radius: 20px;      /* Скругление концов */
+        transition: .3s;          /* Плавная анимация */
+    }
+/* ================================================================ */
+/* ========================== Hero-блок =========================== */
+/* ================================================================ */
+    .hero{
+        margin-top:0;               /* Убираем отступ сверху */
+        width:100%;                 /* Hero занимает всю ширину экрана */
+        display:block;              /* Flex больше не нужен */
+        /*overflow:hidden;            /* Всё что выходит за пределы скрывается */
+    }
+    .hero-inner {
+        width:100%;                 /* На всю ширину телефона */
+        min-height:100vh;  /* Капилот */
+        height: auto;        /* можно оставить, если контент влезает */
+        position:relative;          /* Основа для абсолютного позиционирования*/
+        overflow: hidden;     /* ничего не обрезаем */ 
+       
+        display:flex; /* добавлено: теперь можем управлять .hero-left и .hero-right */
+        flex-direction:column; /* сверху вниз */
+        justify-content:space-between; /* распределяем блоки по высоте */
+        box-sizing:border-box;
+    }
+    .hero-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: fill;       /* Картинка РАСТЯГИВАЕТСЯ как резиновая */
+        object-position: center;
+        z-index: 1;
+        transition: opacity 1s ease-in-out; /* плавная смена */
+    }
+    .hero-left,
+    .hero-right{
+        position: relative;             /* Для абсолютного позиционирования внутри */
+        z-index: 2; 
+    }
+    .hero-left{
+        flex:1; /* вместо flex:1 — теперь занимает 75% высоты */
+        width:100%;                              /* На всю ширину телефона */
+        display:flex;                        /* Flex */
+        flex-direction:column;               /* Всё сверху вниз */
+        justify-content:flex-start;          /* Начинаем сверху */
+        align-items:flex-start;              /* Всё прижато влево */
+        padding:95px 25px 10px; /* уменьшил нижний отступ, чтобы не давить .hero-right */
+        box-sizing:border-box;               /* Padding входит в размеры */
+        background:transparent;              /* Фона больше нет */
+    }
+    .hero-right{
+        width:calc(100% - 16px);          /* Отступы по 20px слева и справа */
+        flex:1; /* занимает 25% высоты экрана */
+        margin:0 auto 16px;               /* Центрируем и делаем нижний отступ */
+        background:#c00000;               /* Красный фон */
+        border-radius:20px;               /* Скругление углов */
+        box-sizing:border-box;            /* Padding войдёт внутрь */
+        padding:30px 24px;                /* Внутренние отступы */
+        display:flex;                     /* В дальнейшем текст и иконки */
+        flex-direction:column;            /* Всё сверху вниз */
+        z-index:3;                        /* Поверх фотографии */
+    }
+/* ---------------------- ГЛАВНЫЙ ЗАГОЛОВОК ----------------------- */
+    .hero-left-text1{
+       margin-top: clamp(-30px, calc(-94.29px + 21.43vw), 125px);
+       /* margin-top: -30px;*/
+        /* margin-top: 125px;   /* вверх */
+        margin-left: clamp(-4px, calc(-24.31px + 6.77vw), 45px);
+       /* margin-left: -4px; */
+       /* margin-left: 45px;   /* вправо */
+
+        width:60%;                     /* Заголовок занимает примерно половину экрана */
+        /*margin:0;                      /* Убираем внешние отступы */
+       font-size: clamp(28px, calc(-2.72px + 10.24vw), 102px);
+        /*font-size:28px;  */
+        /*font-size:102px;                /* Крупный размер текста */
+        line-height: clamp(0.92, calc(1.019 - 0.00968vw), 0.99);
+        /*line-height:0.99;
+       /* line-height:0.92;              /* Плотные строки как на макете */
+        font-weight:700;               /* Очень жирный */
+        
+        letter-spacing: clamp(-0.7px, calc(1.49px - 0.73vw), -6px);
+        /*letter-spacing:-0.7px; */
+        /* letter-spacing:-6px;           /* Немного сжимаем буквы */
+        color:#000000;                 /* Темно-синий */
+       /* text-shadow:
+            0 1px 2px rgba(255,255,255,.45);*/
+      /*  z-index:2;                     /* Поверх фотографии */
+        white-space: nowrap;             /*Запретить перенос строк*/
+    }
+/* ------------------------- ПОДЗАГОЛОВОК ------------------------- */
+    .hero-left-text2{
+        margin-top:18px;               /* Отступ сверху */
+        margin-bottom:35px;            /* Отступ перед иконками */
+        font-size:25px;                /* Размер текста */
+        line-height:1.2;               /* Межстрочный интервал */
+        font-weight:500;               /* Средняя жирность */
+        color:#07152f;                 /* Такой же цвет */
+        text-shadow:
+            0 1px 2px rgba(255,255,255,.45);
+        z-index:2;                     /* Поверх фотографии */
+    }
+/* ----------------------- Иконки с текстом ----------------------- */
+    
+    .icon-left{
+        width:42px;                 /* Ширина иконки 42 */
+        height:42px;                /* Высота иконки 42 */
+        stroke:#d62828;             /* Красный цвет */
+        stroke-width:2.4;           /* Толщина линий */
+        fill:none;                  /* Без заливки */
+        flex-shrink:0;              /* Запрещаем уменьшать */
+    }
+    .feature-text-left{
+        font-size:20px;             /* Размер текста */
+        line-height:1.15;           /* Межстрочный интервал */
+        font-weight:700;            /* Жирный */
+        color:#111;                 /* Черный */
+    }
+    .feature{
+        display:flex;
+        position: relative;          /* Нужно для псевдоэлемента */
+        align-items:center;
+        gap:16px;
+        padding:18px 0;               /* Отступ сверху и снизу */
+       /* border-bottom:1px solid rgba(0,0,0,.10);   /* Горизонтальная линия */
+
+    }
+    /* Блок преймуществ */
+    .hero-features-left{
+         display:flex;                    /* Включаем Flexbox */
+        flex-direction:column;           /* Иконки идут сверху вниз */
+        align-items:flex-start;          /* Всё прижато к левому краю */
+        /*gap:24px;                        /* Расстояние между преимуществами */
+        margin-top:10px;                 /* Отступ после подзаголовка */
+        width:100%;                      /* На всю ширину */
+        z-index:2;                       /* Поверх фотографии */
+    }
+    /* Один пункт */
+    .hero-features-left .feature{
+        
+        display:flex;                    /* Иконка и текст располагаются рядом */
+        flex-direction:row;              /* Горизонтально */
+        align-items:center;              /* По вертикали по центру */
+        gap:18px;                        /* Расстояние между иконкой и текстом */
+        width:25%;                      /* На всю ширину */
+        position:relative;               /* Нужно для разделителя */
+    }
+    /* Горизонтальный разделитель */
+    .hero-features-left .feature::after{
+        content:"";
+        position:absolute;
+        display:block;      /* Важно! Включаем обратно */
+        left:0;
+        bottom:-7px;            /* Линия прямо под элементом */
+        width:100%;             /* На всю ширину блока */
+        height:1px;             /* Толщина линии */
+        background:rgb(254, 0, 0);
+        z-index:1;              /* Чтобы линия была под текстом, но видимой */
+    }
+
+    /* Вертикальный разделитель */
+    .hero-features-left .feature::before{
+        content:"";                      /* Создаем вертикальную линию */
+        position:absolute;               /* Абсолютное позиционирование */
+        left:48px;                       /* Линия сразу после иконки */
+        top:50%;                         /* Центр по высоте */
+        transform:translateY(-50%);      /* Точное центрирование */
+        width:1px;                       /* Толщина линии */
+        height:50px;                     /* Высота линии */
+        background:rgba(0, 0, 0, 0.220);      /* Светло-серая линия */
+        
+    }
+    .hero-features-left .feature:last-child{
+        border-bottom:none;
+    }
+    .hero-features-left .feature:last-child::after{
+        display: none;               /* У последнего линии нет */
+    }
+
+    
+  .hero-features-left{
+        display: none;
+    }  
+.hero-features-right{
+        display: none;
+    }
+/* ------------------------------ КНОПКИ ------------------------------ */
+    .hero-btn {
+        position: absolute;          /* Абсолютное позиционирование */
+        bottom: clamp(6px, 2vw, 20px); /* Адаптивный отступ снизу */
+
+        width: clamp(120px, 11vw, 220px);  /* Адаптивная ширина кнопки */
+        height: clamp(30px, 3vw, 40px);  /* Адаптивная высота кнопки */
+
+        display: flex;               /* включаем flex-контейнер */
+        justify-content: center;    /* центрируем текст по горизонтали */
+        align-items: center;        /* центрируем текст по вертикали */
+
+        text-align: center;          /* текст по центру */
+        font-size: clamp(10px, 0.9vw, 16px); /* Адаптивный текст кнопки */
+        font-weight: bold;            /* жирный */
+        text-decoration: none;       /* без подчёркивания */
+        
+        border: none;                /* без рамки */
+        border-radius: 6px;          /* скругление */
+        cursor: pointer;             /* курсор руки */
+        
+        transition: transform 0.1s ease, background 0.2s ease; /* анимация */
+    }
+    .hero-left-btn { 
+        left: clamp(12px, 3vw, 40px); 
+        background: #ffe100; color: #000;
+    }
+    .hero-left-btn:hover {
+         background: #ffea33; 
+        }
+
+    .hero-right-btn { 
+        right: clamp(12px, 3vw, 40px); 
+    }
+    
+
+
+    .hero-btn:hover { transform: scale(1.03); } /* увеличение при наведении */
+    .hero-btn:active { transform: scale(0.97); } /* уменьшение при клике */
+
+
+
+    
+
+    .hero-btn.blue { background: #0094ff; color: #fff; } /* синяя кнопка */
+    .hero-btn.blue:hover { background: #1aa4ff; }
+
+/* ---------------------------------------------------------------- */
+
+}
+/*
+Телевоны минимум 320
+         максимум 430- 768
+Планшеты минимум 600px
+        максимум 1366
+
+        1023
+        992
+
+        height: clamp(160px, calc( ((250-160) / (1023 - 300) * 100)) +  (160-300 * ( (250-160) / (1023 - 300) * 100) / 100))), 250px);
+
+clamp(20px, ?vw, 50px) минимум 300, максимум 1023
+Формула
+vw = (MAX - MIN) / (1023 - 300) * 100
+50 - 20 = 30
+1023 - 300 = 723
+30 / 723 = 0,04149377593361
+0,04149377593361 * 100 = 4,14
+Рузультат clamp(20px, 4.14vw, 50px) Но этого ещё недостаточно.
+
+(160-300 * ( (250-160) / (1023 - 300) * 100) / 100))
+
+
+Можно сделать еще точнее! Находим смещение
+смещение = MIN − VIEWPORT_MIN × (vw / 100)
+20 − 300 × (4.14938 / 100)
+
+4.14938 / 100 = 0.0414938
+300 × 0.0414938 = 12.4481
+20 − 12.4481 = 7.5519
+7.55px
+Готово clamp(20px,calc(7.55px + 4.15vw),50px)
+
+Как сделать проверку значения vw, к примеру clamp(20px, 7vw, 50px) диапазона 300–1023 px.
+Формула VIEWPORT_MIN / 100 × vw
+Шаг 1. Проверяем минимальную ширину
+Вычисляем 1vw:
+1vw = 300 / 100 = 3px
+Теперь вычисляем 7vw:
+7 × 3 = 21px
+Сравниваем с минимумом:
+Нужно 20px
+Получилось 21px
+
+Шаг 2. Проверяем максимальную ширину
+Вычисляем 1vw:
+1vw = 1023 / 100 = 10.23px
+Теперь вычисляем 7vw:
+7 × 10.23 = 71.61px
+Получилось:
+71.61px
+
+
+6,7
+*/

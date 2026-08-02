@@ -1,0 +1,16 @@
+<h2 style="margin-bottom: 20px;">Выберите роль</h2>
+
+<form method="POST"
+      style="max-width: 400px; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background: #fafafa;">
+    {% csrf_token %}
+
+    <button name="role" value="client"
+            style="width: 100%; padding: 12px; margin-bottom: 10px; background: #2196F3; color: white; border: none; border-radius: 6px; font-size: 16px;">
+        Я клиент
+    </button>
+
+    <button name="role" value="master"
+            style="width: 100%; padding: 12px; background: #4CAF50; color: white; border: none; border-radius: 6px; font-size: 16px;">
+        Я мастер
+    </button>
+</form>

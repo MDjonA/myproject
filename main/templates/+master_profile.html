@@ -1,0 +1,87 @@
+<h2 style="margin-bottom: 20px;">Профиль мастера {{ master.user.username }}</h2>
+
+<div style="max-width: 600px; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background: #fafafa; margin-bottom: 25px;">
+
+    <p style="margin-bottom: 10px;">
+        <strong>Специализация:</strong> {{ master.specialization }}
+    </p>
+
+    <p style="margin-bottom: 10px;">
+        <strong>Описание:</strong> {{ master.description }}
+    </p>
+
+    <p style="margin-bottom: 10px;">
+        <strong>Рейтинг:</strong> {{ master.rating }} / 5
+    </p>
+
+    <p style="font-size: 22px; color: #FFD700; margin: 0;">
+        {% for i in "12345" %}
+            {% if forloop.counter <= master.rating %}
+                ★
+            {% else %}
+                ☆
+            {% endif %}
+        {% endfor %}
+    </p>
+
+</div>
+
+<h3 style="margin-bottom: 15px;">Услуги мастера</h3>
+
+<ul style="list-style: none; padding: 0; margin-bottom: 30px;">
+    {% for s in services %}
+        <li style="
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: #fafafa;
+        ">
+            <p style="margin: 0 0 8px 0;">
+                <strong>{{ s.title }}</strong>
+            </p>
+
+            <p style="margin: 0 0 12px 0;">
+                <strong>Цена:</strong> {{ s.price }} zł
+            </p>
+
+            <a href="/order/create/{{ s.id }}/"
+               style="padding: 8px 12px; background: #2196F3; color: white; border-radius: 6px; text-decoration: none;">
+                Заказать
+            </a>
+        </li>
+    {% empty %}
+        <li style="padding: 10px; color: #777;">Мастер пока не добавил услуги</li>
+    {% endfor %}
+</ul>
+
+<h3 style="margin-bottom: 15px;">Отзывы клиентов</h3>
+
+<ul style="list-style: none; padding: 0; margin-bottom: 20px;">
+    {% for r in reviews %}
+        <li style="
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: #fafafa;
+        ">
+            <p style="margin: 0 0 8px 0;">
+                <strong>Оценка:</strong> {{ r.rating }}/5
+            </p>
+
+            <p style="margin: 0 0 8px 0;">
+                {{ r.text }}
+            </p>
+
+            <small style="color: #777;">{{ r.timestamp }}</small>
+        </li>
+    {% empty %}
+        <li style="padding: 10px; color: #777;">Отзывов пока нет</li>
+    {% endfor %}
+</ul>
+
+<a href="/review/add/{{ master.id }}/"
+   style="padding: 10px 15px; background: #4CAF50; color: white; border-radius: 6px; text-decoration: none;">
+    Оставить отзыв
+</a>

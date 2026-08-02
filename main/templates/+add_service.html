@@ -1,0 +1,35 @@
+<h2 style="margin-bottom: 20px;">Добавить услугу</h2>
+
+<form method="POST" 
+      style="max-width: 450px; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background: #fafafa;">
+    {% csrf_token %}
+
+    <div style="margin-bottom: 15px;">
+        <label for="title" style="display: block; font-weight: bold; margin-bottom: 5px;">
+            Название услуги
+        </label>
+        <input type="text" id="title" name="title" placeholder="Введите название услуги"
+               style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #bbb;">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <label for="description" style="display: block; font-weight: bold; margin-bottom: 5px;">
+            Описание
+        </label>
+        <textarea id="description" name="description" placeholder="Опишите услугу"
+                  style="width: 100%; height: 120px; padding: 10px; border-radius: 6px; border: 1px solid #bbb;"></textarea>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+        <label for="price" style="display: block; font-weight: bold; margin-bottom: 5px;">
+            Цена (в zł)
+        </label>
+        <input type="number" id="price" name="price" placeholder="Введите цену"
+               style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #bbb;">
+    </div>
+
+    <button type="submit"
+            style="width: 100%; padding: 12px; background: #4CAF50; color: white; border: none; border-radius: 6px; font-size: 16px;">
+        Добавить услугу
+    </button>
+</form>

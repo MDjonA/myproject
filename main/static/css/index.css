@@ -1,0 +1,71 @@
+
+/* ====== ОБЩИЕ НАСТРОЙКИ ====== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-size: cover;
+    color: hsl(0, 0%, 0%);
+}
+/* ====== TOPBAR ====== */
+.topbar {
+    width: 100%;
+    padding: 10px 0;              /* убираем большие боковые отступы */
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    justify-content: center;      /* центрируем внутренний блок */
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+/* Внутренний контейнер шапки */
+.topbar-inner {
+    width: 100%;
+    max-width: 900px;             /* ширина «ленты» по центру */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.topbar .logo {
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.topbar-nav a{
+    margin-left: 10px;
+    white-space: nowrap;
+    padding: 15px 20px; /* уменьшили отступы */
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px; 
+}
+.logo-black { color: #000; }
+.logo-red { color: #e53935; }
+
+.topbar-nav{
+    display:flex;
+}
+
+.burger-btn{
+     display:none;
+}
+/* ============================== FOOTER ============================= */
+body, html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    text-align: center;
+    padding: 25px;
+    background: rgba(0, 0, 0, 0.55);           
+   margin-top: auto; /* отправляет футер вниз */
+    font-size: 16px;
+}

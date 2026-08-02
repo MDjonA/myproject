@@ -1,0 +1,76 @@
+.hero{
+        margin-top:0;               /* Убираем отступ сверху */
+        width:100%;                 /* Hero занимает всю ширину экрана */
+        display:block;              /* Flex больше не нужен */
+        /*justify-content:center;*/
+        overflow:hidden;            /* Всё что выходит за пределы скрывается */
+    }
+    .hero-inner {
+        width:100%;                 /* На всю ширину телефона */
+        height: 100vh;          /* ВАЖНО: теперь блок ровно высоту экрана !!!*/
+        max-width:none;             /* Убираем ограничение ширины */
+        position:relative;          /* Основа для абсолютного позиционирования !!!*/
+        overflow: hidden;       /* Скрываем всё, что выходит за пределы */
+       /* display: block; /* Левая и правая части становятся одна под другой */
+       /* background:none;            /* Общий фон Hero убираем */                                                      
+    }
+    .hero-left{
+        width:100%;                              /* На всю ширину телефона */
+        height:100%;
+        background:
+            url("/static/image/hero/444.png")
+            center top
+            /cover
+            no-repeat;
+        position:relative;                       /* Основа для абсолютных элементов */
+        /* ВАЖНО: padding переносим сюда, но аккуратно */
+        padding:95px 25px 180px;                 /* Верх | Лево/Право | Низ */
+        box-sizing:border-box;                   /* Padding входит в размеры */
+        display:flex;                            /* Используем Flexbox */
+        flex-direction:column;                   /* Элементы располагаются сверху вниз */  
+        justify-content:flex-start;              /* Всё начинается сверху */     
+        align-items:flex-start;                  /* Всё прижимается к левому краю */
+        z-index: 2;              /* Поверх картинки !!!!!!*/
+        /* overflow:hidden;                         /* Ничего не выходит за границы */
+        /* border-radius:0;                         /* Пока без скруглений */
+    }
+/* ---------------------- ГЛАВНЫЙ ЗАГОЛОВОК ----------------------- */
+    .hero-left-text1{
+       margin-top: clamp(-30px, calc(-94.29px + 21.43vw), 125px);
+       /* margin-top: -30px;*/
+        /* margin-top: 125px;   /* вверх */
+        margin-left: clamp(-4px, calc(-24.31px + 6.77vw), 45px);
+       /* margin-left: -4px; */
+       /* margin-left: 45px;   /* вправо */
+
+        width:60%;                     /* Заголовок занимает примерно половину экрана */
+        /*margin:0;                      /* Убираем внешние отступы */
+       font-size: clamp(28px, calc(-2.72px + 10.24vw), 102px);
+        /*font-size:28px;  */
+        /*font-size:102px;                /* Крупный размер текста */
+        line-height: clamp(0.92, calc(1.019 - 0.00968vw), 0.99);
+        /*line-height:0.99;
+       /* line-height:0.92;              /* Плотные строки как на макете */
+        font-weight:700;               /* Очень жирный */
+        
+        letter-spacing: clamp(-0.7px, calc(1.49px - 0.73vw), -6px);
+        /*letter-spacing:-0.7px; */
+        /* letter-spacing:-6px;           /* Немного сжимаем буквы */
+        color:#ec0b0b;                 /* Темно-синий */
+       /* text-shadow:
+            0 1px 2px rgba(255,255,255,.45);*/
+      /*  z-index:2;                     /* Поверх фотографии */
+        white-space: nowrap;             /*Запретить перенос строк*/
+    }
+/* ------------------------- ПОДЗАГОЛОВОК ------------------------- */
+    .hero-left-text2{
+        margin-top:18px;               /* Отступ сверху */
+        margin-bottom:35px;            /* Отступ перед иконками */
+        font-size:25px;                /* Размер текста */
+        line-height:1.2;               /* Межстрочный интервал */
+        font-weight:500;               /* Средняя жирность */
+        color:#07152f;                 /* Такой же цвет */
+        text-shadow:
+            0 1px 2px rgba(255,255,255,.45);
+        z-index:2;                     /* Поверх фотографии */
+    }

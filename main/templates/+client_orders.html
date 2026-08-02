@@ -1,0 +1,22 @@
+<h2 style="margin-bottom: 20px;">Мои заказы</h2>
+
+<ul style="list-style: none; padding: 0;">
+    {% for o in orders %}
+        <li style="margin-bottom: 20px; padding: 15px; border: 1px solid #ccc; border-radius: 8px; background: #fafafa;">
+
+            <p><strong>Услуга:</strong> {{ o.service.title }}</p>
+            <p><strong>Статус:</strong> {{ o.status }}</p>
+            <p><strong>Мастер:</strong> {{ o.master.user.username }}</p>
+
+            <div style="margin-top: 10px;">
+                <a href="/chat/{{ o.id }}/"
+                   style="display: inline-block; padding: 8px 12px; background: #2196F3; color: white; border-radius: 6px; text-decoration: none;">
+                    Открыть чат
+                </a>
+            </div>
+
+        </li>
+    {% empty %}
+        <li style="padding: 10px; color: #777;">У вас пока нет заказов</li>
+    {% endfor %}
+</ul>
